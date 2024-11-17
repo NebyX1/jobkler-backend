@@ -1,0 +1,17 @@
+0- Crear entorno local: python -m venv env
+1- Activar entorno local: env\Scripts\activate
+2.1- Instalar Django: python -m pip install Django
+2.2- Instalar Rest Framework: pip install djangorestframework
+3- Crear un proyecto nuevo: python -m django startproject testbackend .
+4- Crear una aplicación nueva: python manage.py startapp sellers
+5- Luego de crear un modelo, correr migraciones: python manage.py makemigrations
+6- Efectivizar las migraciones: python manage.py migrate
+7- Correr el servidor de prueba: python manage.py runserver
+8- Crear super usuario Django: python manage.py createsuperuser
+
+Borrar base de datos completa: python manage.py flush
+
+Obtener el requeriments.txt: pip freeze > requirements.txt
+Instalar el requirements.txt: pip install -r requirements.txt
+Crear apps dentro de una carpeta específica(primero hay que crear la carpeta objetivo manialmente):
+    >python manage.py startapp profession_location apps/profession_location

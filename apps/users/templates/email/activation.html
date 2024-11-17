@@ -1,0 +1,51 @@
+{% load i18n %}
+
+{% block subject %}
+Activación de cuenta en Jobkler
+{% endblock subject %}
+
+{% block text_body %}
+Estás recibiendo este correo electrónico porque necesitas completar el proceso de activación en jobkler.com.
+
+Por favor, ve a la siguiente página para activar tu cuenta:
+http://localhost:3000/user-verification/{{ uid }}/{{ token }}/
+
+¡Bienvenido a bordo! Estás a solo un paso de unirte a nuestra comunidad.
+{% endblock text_body %}
+
+{% block html_body %}
+<div style="font-family: Arial, sans-serif; color: #333;">
+  <!-- Header -->
+  <div style="background-color: #002b5b; padding: 20px; text-align: center;">
+    <h1 style="color: #fff; font-size: 28px; margin: 0;">Bienvenido a <span style="color: #0096c7;">Jobkler</span></h1>
+  </div>
+
+  <!-- Body -->
+  <div style="padding: 30px; background-color: #f7f7f7; color: #333; border: 1px solid #e0e0e0; border-radius: 8px;">
+    <h2 style="color: #002b5b; font-size: 24px;">¡Activación de cuenta requerida!</h2>
+    <p style="font-size: 16px; line-height: 1.6;">¡Hola! 👋 Estás a solo un paso de unirte a nuestra increíble plataforma de servicios profesionales en <strong>Jobkler</strong>. Para empezar, necesitamos que confirmes tu dirección de correo electrónico.</p>
+    
+    <p style="margin-bottom: 20px; font-size: 16px;">Haz clic en el botón de abajo para activar tu cuenta y acceder a todas las oportunidades que tenemos para ti:</p>
+
+    <!-- Button -->
+    <p style="text-align: center; margin-bottom: 30px;">
+      <a href="https://jobkler.com/user-verification/{{ uid }}/{{ token }}/" style="background-color: #002b5b; padding: 15px 30px; color: #fff; text-decoration: none; border-radius: 5px; font-size: 18px; font-weight: bold;">
+        Activar Cuenta
+      </a>
+    </p>
+
+    <!-- Help -->
+    <p style="font-size: 16px;">Si tienes alguna dificultad para activar tu cuenta, no dudes en contactarnos en: <a href="mailto:contacto@jobkler.com" style="color: #002b5b;">contacto@jobkler.com</a>.</p>
+    <p style="font-size: 16px;">¡Esperamos verte pronto! 🌟</p>
+  </div>
+
+  <!-- Footer -->
+  <div style="background-color: #002b5b; color: #fff; padding: 15px; text-align: center; margin-top: 20px;">
+    <p style="font-size: 14px;">© 2024 Jobkler - Todos los derechos reservados.</p>
+    <p style="font-size: 14px;">Nos puedes seguir en: 
+      <a href="https://www.facebook.com/profile.php?id=61568704251531" style="color: #0096c7; text-decoration: none;">Facebook</a> | 
+      <a href="https://www.instagram.com/jobkler_ok/" style="color: #0096c7; text-decoration: none;">Instagram</a>
+    </p>
+  </div>
+</div>
+{% endblock html_body %}

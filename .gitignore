@@ -1,0 +1,26 @@
+# Python
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+*.swp
+*.swo
+*.DS_Store
+
+# Virtual environments
+venv/
+env/
+ENV/
+.venv/
+.pyenv/
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Django
+*.log
+db.sqlite3
+media/
+staticfiles/
+
+# Django secret keys or local settings
+.env

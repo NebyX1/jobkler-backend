@@ -1,0 +1,10 @@
+[flake8]
+max-line-length = 160
+
+per-file-ignores =
+    # Ignorar los errores de importación no resuelta en el archivo models.py
+    users/models.py: F401, F403
+    users/managers.py: F401, F403
+
+# Ignorar errores relacionados con importaciones no resueltas globalmente
+ignore = E402, F401, F403, F821

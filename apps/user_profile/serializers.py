@@ -4,7 +4,8 @@ from .models import UserProfile
 
 class UserProfileSerializer(serializers.ModelSerializer):
     profession_name = serializers.CharField(source="profession.name", read_only=True)
-    location_name = serializers.CharField(source="location.name", read_only=True)
+    state_name = serializers.CharField(source="state.name", read_only=True)
+    city_name = serializers.CharField(source="city.name", read_only=True)
 
     class Meta:
         model = UserProfile
@@ -16,8 +17,10 @@ class UserProfileSerializer(serializers.ModelSerializer):
             "header",
             "profession",
             "profession_name",
-            "location",
-            "location_name",
+            "state",
+            "state_name",
+            "city",
+            "city_name",
             "about",
             "description",
             "phone",

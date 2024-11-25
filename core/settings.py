@@ -149,6 +149,7 @@ else:  # Modo development
         "http://127.0.0.1:3000",
         "http://localhost:8000",  # Backend local
         "http://127.0.0.1:8000",
+        "http://localhost:3001",
     ]
 
 # Configuración del framework REST

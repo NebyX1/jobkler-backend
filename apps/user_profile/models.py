@@ -1,8 +1,9 @@
 from django.db import models
 from django.conf import settings
-from apps.profession_location.models import Profession, Location
+from apps.profession_location.models import Profession, State, City
 
 
+# Modelo de Perfil de Usuario
 class UserProfile(models.Model):
     user = models.OneToOneField(
         settings.AUTH_USER_MODEL,
@@ -21,13 +22,21 @@ class UserProfile(models.Model):
         verbose_name="Profesión",
         help_text="Profesión del usuario"
     )
-    location = models.ForeignKey(
-        Location,
+    state = models.ForeignKey(
+        State,
         on_delete=models.SET_NULL,
         null=True,
         blank=True,
-        verbose_name="Ubicación",
-        help_text="Departamento del usuario"
+        verbose_name="Estado",
+        help_text="Estado o departamento del usuario"
+    )
+    city = models.ForeignKey(
+        City,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        verbose_name="Ciudad",
+        help_text="Ciudad del usuario"
     )
     about = models.TextField(verbose_name="Sobre mí", help_text="Una breve descripción sobre el usuario")
     description = models.TextField(verbose_name="Descripción", help_text="Descripción detallada del perfil")
@@ -71,5 +80,5 @@ class UserProfile(models.Model):
         ordering = ['-created_at']
 
     def __str__(self):
-        return f"{self.name} {self.surname} - {self.profession.name if self.profession else 'Sin profesión'}"
-
+        profession_name = self.profession.name if self.profession else "Sin profesión"
+        return f"{self.name} {self.surname} - {profession_name}"

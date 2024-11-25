@@ -1,30 +1,28 @@
 from rest_framework import generics, permissions
+from django_filters import rest_framework as filters
+from rest_framework.exceptions import NotFound
 from .models import UserProfile
 from .serializers import UserProfileSerializer
 from .permissions import IsOwnerOrReadOnly
-from django_filters import rest_framework as filters
-from rest_framework.exceptions import NotFound
 
 
-# Filtro para UserProfile basado en 'profession__code' y 'location__code'
+# Filtro para UserProfile basado en 'profession__code', 'state__code' y 'city__code'
 class UserProfileFilter(filters.FilterSet):
     profession = filters.CharFilter(field_name='profession__code', lookup_expr='iexact')
-    location = filters.CharFilter(field_name='location__code', lookup_expr='iexact')
+    state = filters.CharFilter(field_name='state__code', lookup_expr='iexact')
+    city = filters.CharFilter(field_name='city__code', lookup_expr='iexact')
 
     def filter_queryset(self, queryset):
-        if self.data.get('profession', None) in ['', None]:
-            self.data = self.data.copy()
-            self.data.pop('profession', None)
-        if self.data.get('location', None) in ['', None]:
-            self.data = self.data.copy()
-            self.data.pop('location', None)
+        # Limpia filtros vacíos o nulos
+        self.data = {k: v for k, v in self.data.items() if v not in ['', None]}
         return super().filter_queryset(queryset)
 
     class Meta:
         model = UserProfile
-        fields = ['profession', 'location']
+        fields = ['profession', 'state', 'city']
 
 
+# Vista para listar perfiles filtrados
 class UserProfileListView(generics.ListAPIView):
     queryset = UserProfile.objects.all()
     serializer_class = UserProfileSerializer
